@@ -13,7 +13,7 @@ ubuntu_zip_name() {
 }
 
 linux_zip_name() {
-  Z3_GIT_VERSION="$(z3_git_version)"
+  export Z3_GIT_VERSION="$(z3_git_version)"
   PLATFORM_STRING="$(python -mplatform)"
   if [[ "${PLATFORM_STRING}" = *"Ubuntu"* ]]; then
      ubuntu_zip_name
