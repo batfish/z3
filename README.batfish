@@ -14,6 +14,8 @@ LINUX_BASE=ubuntu_16.04 TRAVIS_OS_NAME=linux contrib/ci/scripts/travis_ci_entry_
 # contrib/ci/scripts/install_deps_osx.sh
 #
 ## OSX with OpenMP (RECOMMENDED, MUST BE RUN ON OSX, DOES NOT USE DOCKER)
+# You must have OpenMP libraries for this build. Install with:
+# brew install libomp
 ./package_z3_osx_openmp.sh
 
 ## OSX without OpenMP (NOT RECOMMENDED, MUST BE RUN ON OSX, DOES NOT USE DOCKER)
