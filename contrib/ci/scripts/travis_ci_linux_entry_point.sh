@@ -238,5 +238,9 @@ docker build \
   .
 DOCKER_REPO_ROOT="/home/user/z3_src"
 Z3_ZIP="$(docker run "${POSTBUILD_IMAGE}" /bin/bash -c ". ${DOCKER_REPO_ROOT}/linux_common.sh && linux_zip_name")"
+Z3_JAR="$(docker run "${POSTBUILD_IMAGE}" /bin/bash -c ". ${DOCKER_REPO_ROOT}/common.sh && z3_jar_name")"
+Z3_SRC_JAR="$(docker run "${POSTBUILD_IMAGE}" /bin/bash -c ". ${DOCKER_REPO_ROOT}/common.sh && z3_src_jar_name")"
 docker cp "$(docker create "${POSTBUILD_IMAGE}"):${DOCKER_REPO_ROOT}/build/generated-packages/${Z3_ZIP}" "${PACKAGE_OUTPUT_DIR}/"
+docker cp "$(docker create "${POSTBUILD_IMAGE}"):${DOCKER_REPO_ROOT}/build/generated-packages/${Z3_JAR}" "${PACKAGE_OUTPUT_DIR}/"
+docker cp "$(docker create "${POSTBUILD_IMAGE}"):${DOCKER_REPO_ROOT}/build/generated-packages/${Z3_SRC_JAR}" "${PACKAGE_OUTPUT_DIR}/"
 

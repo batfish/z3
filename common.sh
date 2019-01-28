@@ -14,3 +14,11 @@ z3_git_version() {
   fi
 }
 
+z3_jar_name() {
+  echo "com.microsoft.z3-$(z3_git_version).jar"
+}
+
+z3_src_jar_name() {
+  echo "com.microsoft.z3-$(z3_git_version)-sources.jar"
+}
+
