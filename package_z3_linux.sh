@@ -32,6 +32,8 @@ WORKING="$(mktemp -d)"
 cd "${WORKING}"
 umask 0022
 Z3_VERSION="$(z3_version)"
+Z3_JAR="$(z3_jar_name)"
+Z3_SRC_JAR="$(z3_src_jar_name)"
 mkdir -p "${Z3_VERSION}/bin" "${Z3_VERSION}/lib"
 cp "${BUILD_DIR}/z3" "${Z3_VERSION}/bin/z3"
 chmod 0755 "${Z3_VERSION}/bin/z3"
@@ -42,6 +44,15 @@ chmod 0644 "${Z3_VERSION}/lib/libz3java.so"
 cp "${BUILD_DIR}/../LICENSE.txt" "${Z3_VERSION}/LICENSE"
 chmod 0644 "${Z3_VERSION}/LICENSE"
 mkdir -p "${BUILD_DIR}/generated-packages"
+# java classes
+cp "${BUILD_DIR}/com.microsoft.z3.jar" "${BUILD_DIR}/generated-packages/${Z3_JAR}"
+# java source
+mkdir -p "${BUILD_DIR}/java-src/com/microsoft/z3"
+cp -r "${BUILD_DIR}/../src/api/java/." "${BUILD_DIR}/java-src/com/microsoft/z3"
+pushd "${BUILD_DIR}/java-src"
+zip -r "${BUILD_DIR}/generated-packages/${Z3_SRC_JAR}" com
+popd
+# platform-specific binary/libs
 zip -r "${BUILD_DIR}/generated-packages/${Z3_ZIP}" "${Z3_VERSION}"
 cd "${BUILD_DIR}"
 rm -rf "${WORKING}"
