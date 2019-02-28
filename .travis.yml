@@ -15,6 +15,14 @@ env:
   # Configurations
   matrix:
 ###############################################################################
+# Ubuntu 18.04 LTS
+###############################################################################
+    # 64-bit default compilers Release
+    - LINUX_BASE=ubuntu_18.04 C_COMPILER=/usr/bin/gcc-5 CXX_COMPILER=/usr/bin/g++-5 TARGET_ARCH=x86_64 Z3_BUILD_TYPE=Release JAVA_BINDINGS=1
+    # 64-bit GCC 5.4 Debug
+    - LINUX_BASE=ubuntu_18.04 C_COMPILER=/usr/bin/gcc-5 CXX_COMPILER=/usr/bin/g++-5 TARGET_ARCH=x86_64 Z3_BUILD_TYPE=Debug RUN_UNIT_TESTS=BUILD_ONLY
+
+###############################################################################
 # Ubuntu 16.04 LTS
 ###############################################################################
     # 64-bit default compilers Release

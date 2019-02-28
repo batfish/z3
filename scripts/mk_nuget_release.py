@@ -39,6 +39,7 @@ def download_installs():
 
 os_info = {"z64-ubuntu-14" : ('so', 'ubuntu.14.04-x64'),
            'ubuntu-16' : ('so', 'ubuntu-x64'),
+           'ubuntu-18' : ('so', 'ubuntu.18.04-x64'),
            'x64-win' : ('dll', 'win-x64'),
            'x86-win' : ('dll', 'win-x86'),
            'osx' : ('dylib', 'macos'),
@@ -58,6 +59,7 @@ def unpack():
     # +- runtimes
     #    +- win-x64
     #    +- win-x86
+    #    +- ubuntu.18.04-x64
     #    +- ubuntu.16.04-x64
     #    +- ubuntu.14.04-x64
     #    +- debian.8-x64

@@ -66,7 +66,7 @@ can be found in
 
 #### Linux specific configuration variables
 
-* `LINUX_BASE` - The base docker image identifier to use (`ubuntu_16.04`, `ubuntu32_16.04`, or `ubuntu_14.04`).
+* `LINUX_BASE` - The base docker image identifier to use (`ubuntu_18.04`, `ubuntu_16.04`, `ubuntu32_16.04`, or `ubuntu_14.04`).
 
 #### Reproducing a build locally
 

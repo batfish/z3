@@ -6,6 +6,9 @@ LINUX_BASE=ubuntu_14.04 TRAVIS_OS_NAME=linux contrib/ci/scripts/travis_ci_entry_
 ## Ubuntu 16,04 (USES DOCKER)
 LINUX_BASE=ubuntu_16.04 TRAVIS_OS_NAME=linux contrib/ci/scripts/travis_ci_entry_point.sh
 
+## Ubuntu 18,04 (USES DOCKER)
+LINUX_BASE=ubuntu_18.04 TRAVIS_OS_NAME=linux contrib/ci/scripts/travis_ci_entry_point.sh
+
 ### OSX
 # For all OSX builds as of Mojave, make sure you have installed SDK headers by executing:
 # open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
