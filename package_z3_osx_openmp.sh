@@ -52,15 +52,15 @@ chmod 0644 "${Z3_VERSION}/lib/libz3java.dylib"
 cp "${BUILD_DIR}/../LICENSE.txt" "${Z3_VERSION}/LICENSE"
 chmod 0644 "${Z3_VERSION}/LICENSE"
 if [ -n "${BREW_LLVM_PREFIX}" ]; then
-  install_name_tool -change "${BREW_LLVM_PREFIX}/lib/libc++.1.dylib" "/usr/lib/libc++.1.dylib" "${Z3_VERSION}/bin/z3"
-  install_name_tool -change "${BREW_LLVM_PREFIX}/lib/libomp.dylib" "/usr/local/lib/libomp.dylib" "${Z3_VERSION}/bin/z3"
-  install_name_tool -change "${BREW_LLVM_PREFIX}/lib/libc++.1.dylib" "/usr/lib/libc++.1.dylib" "${Z3_VERSION}/lib/libz3.dylib"
-  install_name_tool -change "${BREW_LLVM_PREFIX}/lib/libomp.dylib" "/usr/local/lib/libomp.dylib" "${Z3_VERSION}/lib/libz3.dylib"
+  for i in "${Z3_VERSION}"/{bin/z3,lib/libz3.dylib}; do
+    install_name_tool -change "${BREW_LLVM_PREFIX}/lib/libc++.1.dylib" "/usr/lib/libc++.1.dylib" "$i"
+    install_name_tool -change "${BREW_GMP_PREFIX}/lib/libgmp.10.dylib" "/usr/local/lib/libgmp.dylib" "$i"
+  done
   install_name_tool -change "libz3.dylib" "/usr/local/lib/libz3.dylib" "${Z3_VERSION}/lib/libz3java.dylib"
-  curl -L "http://llvm.org/svn/llvm-project/openmp/trunk/LICENSE.txt" > "${Z3_VERSION}/LICENSE.libomp"
-  chmod 0644 "${Z3_VERSION}/LICENSE.libomp"
-  cp "${BREW_LLVM_PREFIX}/lib/libomp.dylib" "${Z3_VERSION}/lib/libomp.dylib"
-  chmod 0644 "${Z3_VERSION}/lib/libomp.dylib"
+  curl -L "https://www.gnu.org/licenses/lgpl-3.0.txt" > "${Z3_VERSION}/LICENSE.libgmp"
+  chmod 0644 "${Z3_VERSION}/LICENSE.libgmp"
+  cp "${BREW_GMP_PREFIX}/lib/libgmp.dylib" "${Z3_VERSION}/lib/libgmp.dylib"
+  chmod 0644 "${Z3_VERSION}/lib/libgmp.dylib"
 fi
 mkdir -p "${BUILD_DIR}/generated-packages"
 zip -r "${BUILD_DIR}/generated-packages/${Z3_ZIP}" "${Z3_VERSION}"
