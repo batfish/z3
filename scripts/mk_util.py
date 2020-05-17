@@ -2456,6 +2456,8 @@ def mk_config():
             SLIBEXTRAFLAGS = '%s -lgmp' % SLIBEXTRAFLAGS
         else:
             CPPFLAGS = '%s -D_MP_INTERNAL' % CPPFLAGS
+        if EXTRA_LIB_SEARCH_PATH:
+            SLIBEXTRAFLAGS = '%s %s' % (SLIBEXTRAFLAGS, EXTRA_LIB_SEARCH_PATH)
         if GIT_HASH:
             CPPFLAGS = '%s -DZ3GITHASH=%s' % (CPPFLAGS, GIT_HASH)
         CXXFLAGS = '%s -std=c++11' % CXXFLAGS
