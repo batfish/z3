@@ -31,6 +31,7 @@ CPPFLAGS=getenv("CPPFLAGS", "")
 CXXFLAGS=getenv("CXXFLAGS", "")
 AR=getenv("AR", "ar")
 EXAMP_DEBUG_FLAG=''
+EXTRA_LIB_SEARCH_PATH=getenv("EXTRA_LIB_SEARCH_PATH", "")
 LDFLAGS=getenv("LDFLAGS", "")
 JNI_HOME=getenv("JNI_HOME", None)
 OCAMLC=getenv("OCAMLC", "ocamlc")
